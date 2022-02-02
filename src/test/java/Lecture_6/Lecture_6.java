@@ -27,20 +27,20 @@ public class Lecture_6 {
     }
 
     @Test(priority = 2)
-    public void belowTest(){
+    public void belowTest() {
         WebElement password = driver.findElement(By.id("password"));
         driver.findElement(with(By.tagName("input")).below(password)).click();
     }
 
     @Test(priority = 3)
-    public void rightOfTest(){
+    public void rightOfTest() {
         WebElement loginCredentials = driver.findElement(By.id("login_credentials"));
         System.out.println(driver.findElement(with(By.tagName("h4")).toRightOf(loginCredentials)).getText());
     }
 
 
     @Test(priority = 4)
-    public void leftOfTest(){
+    public void leftOfTest() {
         WebElement loginCredentials = driver.findElement(By.className("login_password"));
         System.out.println(driver.findElement(with(By.tagName("h4")).toLeftOf(loginCredentials)).getText());
     }
