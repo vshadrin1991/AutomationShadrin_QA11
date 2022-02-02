@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lecture 3">
+<suite name="My first test">
     <test name="Lecture 3">
         <classes>
             <class name="Lecture_3.Lecture_3"/>
