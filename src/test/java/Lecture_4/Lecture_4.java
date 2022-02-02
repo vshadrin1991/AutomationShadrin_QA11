@@ -61,7 +61,7 @@ public class Lecture_4 {
         Assert.assertTrue(email.contains("sharelane.com"));
         String password = driver.findElement(By.xpath("//table[@border='1']/tbody/tr[2]/td[2]")).getText();
         Assert.assertEquals(password, "1111");
-        userData.put("email", email );
+        userData.put("email", email);
         userData.put("password", password);
     }
 
