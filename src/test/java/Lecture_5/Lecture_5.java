@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Lecture_5 {
     WebDriver driver = null;
