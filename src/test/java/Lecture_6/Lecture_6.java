@@ -1,22 +1,17 @@
 package Lecture_6;
 
+import BaseObjects.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
-public class Lecture_6 {
-    WebDriver driver = null;
+public class Lecture_6 extends BaseTest {
 
     @BeforeTest
     public void preconditions() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
     }
 
@@ -53,12 +48,5 @@ public class Lecture_6 {
         System.out.println(driver.findElements(with(By.tagName("input")).near(password, 99)).size());
         driver.findElement(with(By.tagName("input")).near(password)).sendKeys("above");
     }
-
-
-    @AfterTest
-    public void postconditions() {
-        driver.quit();
-    }
-
 
 }
