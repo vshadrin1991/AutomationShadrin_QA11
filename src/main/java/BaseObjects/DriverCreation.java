@@ -1,5 +1,7 @@
 package BaseObjects;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,12 +13,14 @@ public class DriverCreation {
     public enum Drivers {IE, CHROME, FIREFOX};
 
     public static WebDriver getDriver(Drivers drivers) {
+
         if (driver == null) {
             switch(drivers) {
                 case IE:
                     driver = new InternetExplorerDriver();
                     break;
                 case CHROME:
+                    WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
                     break;
                 case FIREFOX:
