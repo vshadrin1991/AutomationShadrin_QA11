@@ -20,7 +20,7 @@ public class BaseTest {
 
     @AfterTest
     public void postcondition() {
-        closeDriver();
+        closeDriver(DriverCreation.Drivers.valueOf(context.getSuite().getParameter("browser")));
     }
 
 }
