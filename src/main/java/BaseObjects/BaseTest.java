@@ -15,12 +15,12 @@ public class BaseTest {
     @BeforeTest
     public void precondition(ITestContext context) {
         this.context = context;
-        this.driver = getDriver(DriverCreation.Drivers.valueOf(context.getSuite().getParameter("browser")));
+        this.driver = getDriver(context.getSuite().getParameter("browser"));
     }
 
     @AfterTest
     public void postcondition() {
-        closeDriver();
+        closeDriver(context.getSuite().getParameter("browser"));
     }
 
 }
