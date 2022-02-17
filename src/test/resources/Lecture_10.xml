@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture 10" parallel="tests" thread-count="3">
+
+    <test name="Lecture_10 part 1.1">
+        <groups>
+            <run>
+                <include name="Smoke"/>
+                <include name="Regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Lecture_10.Lecture_10_1"/>
+        </classes>
+    </test>
+
+
+    <test name="Lecture_10 part 1.2">
+        <groups>
+            <run>
+                <exclude name="Regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Lecture_10.Lecture_10_1"/>
+        </classes>
+    </test>
+
+    <test name="Lecture_10 part 2" enabled="true">
+        <parameter name="name" value="Hello"/>
+        <classes>
+            <class name="Lecture_10.Lecture_10_2"></class>
+        </classes>
+    </test>
+
+</suite>

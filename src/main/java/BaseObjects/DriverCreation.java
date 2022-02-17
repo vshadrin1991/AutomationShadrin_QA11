@@ -8,14 +8,16 @@ import java.util.Locale;
 import static io.github.bonigarcia.wdm.WebDriverManager.getInstance;
 
 public class DriverCreation {
-    private static WebDriver driver = null;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static WebDriver getDriver(String drivers) {
-        if (driver == null) {
-            driver = getInstance(DriverManagerType.valueOf(drivers.toUpperCase(Locale.ROOT))).create();
-            driver.manage().window().maximize();
+    public static void createDriver(String drivers) {
+        if (driver.get() == null) {
+            driver.set(getInstance(DriverManagerType.valueOf(drivers.toUpperCase(Locale.ROOT))).create());
         }
-        return driver;
+    }
+
+    public static WebDriver getDriver(){
+        return driver.get();
     }
 
     public static void closeDriver(String drivers) {
