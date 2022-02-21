@@ -2,7 +2,6 @@ package BaseObjects;
 
 import TestNgUtills.ExtentReport;
 import TestNgUtills.Listener;
-import TestNgUtills.Report;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
@@ -11,9 +10,10 @@ import org.testng.annotations.Listeners;
 
 import java.lang.reflect.InvocationTargetException;
 
-import static BaseObjects.DriverCreation.*;
+import static BaseObjects.DriverCreation.closeDriver;
+import static BaseObjects.DriverCreation.getDriver;
 
-@Listeners({Listener.class, ExtentReport.class})
+@Listeners({Listener.class})
 public abstract class BaseTest {
     protected WebDriver driver;
     protected ITestContext context;
