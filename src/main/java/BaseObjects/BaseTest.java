@@ -1,6 +1,8 @@
 package BaseObjects;
 
+import TestNgUtills.ExtentReport;
 import TestNgUtills.Listener;
+import TestNgUtills.Report;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
@@ -11,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import static BaseObjects.DriverCreation.*;
 
-@Listeners(Listener.class)
+@Listeners({Listener.class, ExtentReport.class})
 public abstract class BaseTest {
     protected WebDriver driver;
     protected ITestContext context;
@@ -21,7 +23,6 @@ public abstract class BaseTest {
     public void precondition(ITestContext context) {
         this.context = context;
         this.browserName = context.getSuite().getParameter("browser") == null ? System.getProperty("browser") : context.getSuite().getParameter("browser");
-        createDriver(browserName == null ? "chrome" : browserName);
         this.driver = getDriver();
     }
 

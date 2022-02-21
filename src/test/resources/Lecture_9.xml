@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lecture 9" thread-count="3" parallel="tests">
+<suite name="Lecture 9" >
     <parameter name="browser" value="CHROME"/>
     <parameter name="url" value="http://the-internet.herokuapp.com/"/>
 
-    <test name="Lecture_9.1">
-        <classes>
-            <class name="Lecture_9.Lecture_9"/>
-        </classes>
-    </test>
-
-    <test name="Lecture_9.2">
-        <classes>
-            <class name="Lecture_9.Lecture_9"/>
-        </classes>
-    </test>
-
-    <test name="Lecture_9.3">
+    <test name="Lecture_9">
         <classes>
             <class name="Lecture_9.Lecture_9"/>
         </classes>
