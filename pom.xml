@@ -64,7 +64,8 @@
                         <suiteXmlFile>${suite}</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar
+                        -Xmx256m
                     </argLine>
                 </configuration>
                 <dependencies>

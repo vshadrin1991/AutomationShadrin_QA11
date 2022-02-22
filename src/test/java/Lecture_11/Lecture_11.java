@@ -76,6 +76,6 @@ public class Lecture_11 extends BaseTest {
 
         get(CheckboxesPage.class)
                 .verifyCheckboxStatus(2, false)
-                .verifyCheckboxStatus(1, true);
+                .verifyCheckboxStatus(1, false);
     }
 }

@@ -28,7 +28,7 @@ public class Lecture_9 extends BaseTest {
                 .verifySubTitleTxt();
     }
 
-    @Test
+    @Test(priority = 1)
     public void abTesting_Test() {
         get(HomePage.class).clickLink(AB_TESTING);
 
@@ -37,7 +37,7 @@ public class Lecture_9 extends BaseTest {
                 .checkContentTxt(CONTAINS, "Also known as split testing.");
     }
 
-    @Test
+    @Test(priority = 2)
     public void checkboxes_Test() {
         get(HomePage.class).clickLink(CHECKBOXES);
 

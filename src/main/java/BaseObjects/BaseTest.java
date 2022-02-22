@@ -13,7 +13,9 @@ import java.lang.reflect.InvocationTargetException;
 import static BaseObjects.DriverCreation.closeDriver;
 import static BaseObjects.DriverCreation.getDriver;
 
+
 @Listeners({Listener.class, InvokedMethodsListener.class})
+
 public abstract class BaseTest {
     protected WebDriver driver;
     protected ITestContext context;
@@ -34,7 +36,7 @@ public abstract class BaseTest {
         return instance;
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void postcondition() {
         closeDriver();
     }
