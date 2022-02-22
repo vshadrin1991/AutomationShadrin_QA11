@@ -32,8 +32,8 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage clickLink(String text) {
-        click(getLink(text));
+    public HomePage clickLink(HomeLinks link) {
+        click(getLink(link.getLink()));
         return this;
     }
 }
