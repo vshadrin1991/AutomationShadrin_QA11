@@ -21,7 +21,7 @@ public abstract class BaseTest {
     protected ITestContext context;
 
     @BeforeTest
-    public void precondition(ITestContext context) {
+    public void setUp(ITestContext context) {
         this.context = context;
         this.driver = getDriver();
     }
@@ -37,8 +37,7 @@ public abstract class BaseTest {
     }
 
     @AfterTest(alwaysRun = true)
-    public void postcondition() {
+    public void closeUp() {
         closeDriver();
     }
-
 }

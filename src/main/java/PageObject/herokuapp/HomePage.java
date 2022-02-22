@@ -4,6 +4,8 @@ import PageObject.BasePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.util.Arrays;
+
 public class HomePage extends BasePage {
     private By title = By.tagName("h1");
     private By subTitle = By.tagName("h2");
@@ -24,6 +26,11 @@ public class HomePage extends BasePage {
 
     public HomePage verifySubTitleTxt() {
         Assert.assertEquals(getText(subTitle), "Available Examples");
+        return this;
+    }
+
+    public HomePage verifyHomePage() {
+        Arrays.asList(HomeLinks.values()).forEach(homePageLinksEnum -> Assert.assertTrue(driver.findElement(getLink(homePageLinksEnum.getLink())).isDisplayed()));
         return this;
     }
 
