@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture 12" parallel="tests">
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="url" value="http://the-internet.herokuapp.com/"/>
+
+    <test name="AB Testing Test">
+        <parameter name="linkName" value="AB_TESTING"/>
+        <classes>
+            <class name="Lecture_12.HomePageTest"/>
+            <class name="Lecture_12.ABTestingTest"/>
+        </classes>
+    </test>
+
+    <test name="Checkbox Test">
+        <parameter name="linkName" value="CHECKBOXES"/>
+        <classes>
+            <class name="Lecture_12.HomePageTest"/>
+            <class name="Lecture_12.CheckboxTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,8 +1,7 @@
 package BaseObjects;
 
-import TestNgUtills.ExtendReport;
+import TestNgUtills.InvokedMethodsListener;
 import TestNgUtills.Listener;
-import TestNgUtills.Report;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
@@ -11,30 +10,24 @@ import org.testng.annotations.Listeners;
 
 import java.lang.reflect.InvocationTargetException;
 
-import static BaseObjects.DriverCreation.*;
+import static BaseObjects.DriverCreation.closeDriver;
+import static BaseObjects.DriverCreation.getDriver;
 
-@Listeners({Listener.class, Report.class, ExtendReport.class})
+@Listeners({Listener.class, InvokedMethodsListener.class})
 public abstract class BaseTest {
     protected WebDriver driver;
     protected ITestContext context;
-    private String browserName;
 
     @BeforeTest
     public void precondition(ITestContext context) {
         this.context = context;
-        this.browserName = context.getSuite().getParameter("browser") == null ? System.getProperty("browser") : context.getSuite().getParameter("browser");
-        createDriver(browserName == null ? "chrome" : browserName);
         this.driver = getDriver();
     }
 
     protected <T> T get(Class<T> page) {
-        return get(page, this.driver);
-    }
-
-    protected <T> T get(Class<T> page, WebDriver driver) {
         T instance = null;
         try {
-            instance = page.getDeclaredConstructor(WebDriver.class).newInstance(driver);
+            instance = page.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
         }
@@ -43,7 +36,7 @@ public abstract class BaseTest {
 
     @AfterTest
     public void postcondition() {
-        closeDriver(browserName == null ? "chrome" : browserName);
+        closeDriver();
     }
 
 }

@@ -2,7 +2,6 @@ package PageObject.herokuapp;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class HomePage extends BasePage {
@@ -11,10 +10,6 @@ public class HomePage extends BasePage {
 
     private By getLink(String text) {
         return By.partialLinkText(text);
-    }
-
-    public HomePage(WebDriver driver) {
-        super(driver);
     }
 
     public HomePage open(String url) {
@@ -33,7 +28,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage clickLink(HomeLinks link) {
-        click(getLink(link.getLink()));
+        actions.click(driver.findElement(getLink(link.getLink()))).perform();
         return this;
     }
 }

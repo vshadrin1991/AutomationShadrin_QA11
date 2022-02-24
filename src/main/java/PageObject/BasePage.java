@@ -2,14 +2,23 @@ package PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.testng.Reporter.*;
+import java.time.Duration;
+
+import static BaseObjects.DriverCreation.getDriver;
+import static org.testng.Reporter.log;
 
 public abstract class BasePage {
     protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
-    protected BasePage(WebDriver driver) {
-        this.driver = driver;
+    protected BasePage() {
+        this.driver = getDriver();
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
+        this.actions = new Actions(this.driver);
     }
 
     protected BasePage open(String url) {
@@ -45,6 +54,14 @@ public abstract class BasePage {
      */
     protected String getAttribute(By element, String attributeName) {
         return driver.findElement(element).getAttribute(attributeName);
+    }
+
+    protected void sleep(long seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

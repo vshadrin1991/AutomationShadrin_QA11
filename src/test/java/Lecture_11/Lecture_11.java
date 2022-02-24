@@ -1,7 +1,7 @@
 package Lecture_11;
 
 import BaseObjects.BaseTest;
-import PageObject.herokuapp.Checkboxes;
+import PageObject.herokuapp.CheckboxesPage;
 import PageObject.herokuapp.HomePage;
 import io.qameta.allure.*;
 import org.testng.annotations.BeforeClass;
@@ -34,16 +34,15 @@ public class Lecture_11 extends BaseTest {
     @Link("https://instagram.com/")
     @Issue("COVID-19")
     @TmsLink("COVID-19")
-    @Attachment(value = "screenshot", type = "image/png")
     public void checkboxesAllChecked_Test() {
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .verifyCheckboxStatus(2, true)
                 .verifyCheckboxStatus(1, false);
 
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .clickCheckbox(1);
 
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .verifyCheckboxStatus(2, true)
                 .verifyCheckboxStatus(1, true);
     }
@@ -55,12 +54,11 @@ public class Lecture_11 extends BaseTest {
     @Link("https://instagram.com/")
     @Issue("COVID-19")
     @TmsLink("COVID-19")
-    @Attachment(value = "screenshot", type = "image/png")
     public void checkboxesAllUnchecked_Test() {
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .clickCheckbox(1).clickCheckbox(2);
 
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .verifyCheckboxStatus(2, false)
                 .verifyCheckboxStatus(1, false);
     }
@@ -72,12 +70,11 @@ public class Lecture_11 extends BaseTest {
     @Link("https://instagram.com/")
     @Issue("COVID-19")
     @TmsLink("COVID-19")
-    @Attachment(value = "screenshot", type = "image/png")
     public void checkboxesAllOneChecked_Test() {
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .clickCheckbox(1);
 
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .verifyCheckboxStatus(2, false)
                 .verifyCheckboxStatus(1, true);
     }

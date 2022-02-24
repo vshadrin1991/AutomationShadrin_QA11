@@ -2,7 +2,7 @@ package Lecture_9;
 
 import BaseObjects.BaseTest;
 import PageObject.herokuapp.AbtestPage;
-import PageObject.herokuapp.Checkboxes;
+import PageObject.herokuapp.CheckboxesPage;
 import PageObject.herokuapp.HomePage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -41,15 +41,15 @@ public class Lecture_9 extends BaseTest {
     public void checkboxes_Test() {
         get(HomePage.class).clickLink(CHECKBOXES);
 
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .verifyCheckboxStatus(2, true)
                 .verifyCheckboxStatus(1, false);
 
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .clickCheckbox(1)
                 .clickCheckbox(2);
 
-        get(Checkboxes.class)
+        get(CheckboxesPage.class)
                 .verifyCheckboxStatus(1, true)
                 .verifyCheckboxStatus(2, true);
     }
