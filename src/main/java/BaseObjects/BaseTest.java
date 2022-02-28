@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Logger;
 
 import static BaseObjects.DriverCreation.closeDriver;
 import static BaseObjects.DriverCreation.getDriver;

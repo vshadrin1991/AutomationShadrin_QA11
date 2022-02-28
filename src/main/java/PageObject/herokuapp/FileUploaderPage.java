@@ -19,10 +19,6 @@ public class FileUploaderPage extends BasePage {
     private By dragDropUpload = By.id("drag-drop-upload");
     private By uploadFileName = By.xpath("//*[@id='drag-drop-upload']//*[@class='dz-filename']//span");
 
-    public FileUploaderPage(WebDriver driver) {
-        super(driver);
-    }
-
     public FileUploaderPage verifyPageTitle(String title) {
         Assert.assertEquals(getText(this.title), title);
         return this;
@@ -45,7 +41,7 @@ public class FileUploaderPage extends BasePage {
 
     public FileUploaderPage dragDropUpload(String imgName){
         click(dragDropUpload);
-        pause(1);
+        sleep(1);
         StringSelection stringSelection = new StringSelection(userDir + "\\files\\" + imgName);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, null);

@@ -1,7 +1,7 @@
 package Lecture_10;
 
 import TestNgUtills.DataProviderStorage;
-import TestNgUtills.DriverListener;
+import TestNgUtills.Listener;
 import TestNgUtills.Retry;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.internal.thread.ThreadTimeoutException;
 
-@Listeners(DriverListener.class)
+@Listeners(Listener.class)
 public class Lecture_10_2 {
     private long timeout = 3;
 

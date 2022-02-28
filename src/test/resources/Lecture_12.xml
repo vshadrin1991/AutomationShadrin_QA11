@@ -2,9 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Welcome to the-internet" parallel="tests">
-    <parameter name="browser" value="CHROME"/>
-    <parameter name="url" value="http://the-internet.herokuapp.com/"/>
-    
+    <parameter name="property" value="herokuapp"/>
     <test name="Context Menu">
         <classes>
             <class name="Lecture_12.HomePage_Test"/>

@@ -13,10 +13,6 @@ public class ContextMenuPage extends BasePage {
     private By title = By.tagName("h3");
     private By hotSpot = By.id("hot-spot");
 
-    public ContextMenuPage(WebDriver driver) {
-        super(driver);
-    }
-
     public ContextMenuPage verifyPageTitle() {
         Assert.assertEquals(getText(title), CONTEXT_MENU.getLink());
         return this;

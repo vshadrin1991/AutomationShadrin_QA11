@@ -9,7 +9,7 @@ public class HomePage_Test extends BaseTest {
     @BeforeClass
     public void preconditions() {
         get(HomePage.class)
-                .open(context.getSuite().getParameter("url"));
+                .open();
     }
 
     @Test

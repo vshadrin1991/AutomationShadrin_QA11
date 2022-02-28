@@ -1,28 +1,42 @@
 package PageObject;
 
+import BaseObjects.BaseTest;
+import Configs.ReadProperties;
+import TestNgUtills.Listener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Properties;
+import java.util.logging.Logger;
 
 import static BaseObjects.DriverCreation.getDriver;
-import static org.testng.Reporter.log;
 
 public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;
+    protected Properties properties;
+    protected static Logger log = Logger.getLogger(BaseTest.class.getName());
+
 
     protected BasePage() {
         this.driver = getDriver();
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
         this.actions = new Actions(this.driver);
+        this.properties = new ReadProperties(Listener.getContext().getSuite().getParameter("property")).getProperties();
+    }
+
+    public BasePage open() {
+        log.info("Open page " + properties.getProperty("url"));
+        driver.get(properties.getProperty("url"));
+        return this;
     }
 
     protected BasePage open(String url) {
-        log("Open page " + url);
+        log.info("Open page " + url);
         driver.get(url);
         return this;
     }
@@ -34,7 +48,7 @@ public abstract class BasePage {
     }
 
     protected BasePage click(By element) {
-        log("Click on " + element);
+        log.info("Click on " + element);
         driver.findElement(element).click();
         return this;
     }
