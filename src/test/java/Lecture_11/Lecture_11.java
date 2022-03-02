@@ -12,18 +12,11 @@ import static PageObject.herokuapp.HomeLinks.CHECKBOXES;
 
 public class Lecture_11 extends BaseTest {
 
-    String url;
-
-    @BeforeTest
-    public void getUrl() {
-        url = context.getSuite().getParameter("url");
-    }
-
     @BeforeClass
     public void preconditions() {
         get(HomePage.class)
-                .open(url)
-                .verifyTitleTxt()
+                .open();
+        get(HomePage.class).verifyTitleTxt()
                 .verifySubTitleTxt();
         get(HomePage.class).clickLink(CHECKBOXES);
     }
@@ -76,6 +69,6 @@ public class Lecture_11 extends BaseTest {
 
         get(CheckboxesPage.class)
                 .verifyCheckboxStatus(2, false)
-                .verifyCheckboxStatus(1, false);
+                .verifyCheckboxStatus(1, true);
     }
 }

@@ -20,6 +20,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage verifyTitleTxt() {
+        log.debug("Hello");
         Assert.assertEquals(getText(title), "Welcome to the-internet");
         return this;
     }
