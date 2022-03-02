@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture 13">
+    <test name="Java Script Alerts">
+        <parameter name="linkName" value="JS_ALERT"/>
+        <classes>
+            <class name="Lecture_13.HomePageTest"/>
+            <class name="Lecture_13.JavaScriptAlertsTest"/>
+        </classes>
+    </test>
+
+    <test name="Frame">
+        <parameter name="linkName" value="FRAMES"/>
+        <classes>
+            <class name="Lecture_13.HomePageTest"/>
+            <class name="Lecture_13.FrameTest"/>
+        </classes>
+    </test>
+</suite>
