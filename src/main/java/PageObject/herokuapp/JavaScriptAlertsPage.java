@@ -32,7 +32,7 @@ public class JavaScriptAlertsPage extends BasePage {
                 jsButton = jsPromptBtn;
                 break;
         }
-        click(jsButton);
+        clickButton(jsButton);
         return this;
     }
 

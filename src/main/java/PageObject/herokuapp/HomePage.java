@@ -28,7 +28,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage clickLink(HomeLinks link) {
-        actions.click(driver.findElement(getLink(link.getLink()))).perform();
+        actions.click(findElement(getLink(link.getLink()))).perform();
         return this;
     }
 }

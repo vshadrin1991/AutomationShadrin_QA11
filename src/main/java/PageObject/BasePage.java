@@ -1,14 +1,19 @@
 package PageObject;
 
 import Configuration.PropertyReader;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 import static BaseObjects.DriverCreation.getDriver;
@@ -41,21 +46,102 @@ public abstract class BasePage {
     }
 
     protected BasePage enter(By element, CharSequence... data) {
-        log.debug("Enter " + data);
-        driver.findElement(element).clear();
-        driver.findElement(element).sendKeys(data);
+        log.debug("Enter " + Arrays.toString(data));
+        findElement(element).clear();
+        findElement(element).sendKeys(data);
         return this;
     }
 
-    protected BasePage click(By element) {
-        log.debug("Click on " + element);
-        driver.findElement(element).click();
+    private BasePage click(By element) {
+        findElement(element).click();
+        return this;
+    }
+
+    protected BasePage clickButton(By element) {
+        log.debug("Click on button " + element);
+        click(element);
+        return this;
+    }
+
+    protected BasePage clickCheckbox(By element) {
+        log.debug("Click on checkbox " + element);
+        click(element);
+        return this;
+    }
+
+    protected BasePage clickTab(By element) {
+        log.debug("Click on tab " + element);
+        click(element);
+        return this;
+    }
+
+    protected BasePage submit(By element) {
+        log.debug("Submit " + element);
+        findElement(element).submit();
+        return this;
+    }
+
+    protected BasePage selectByValue(By element, String value) {
+        log.debug("Select by value " + value);
+        Select select = new Select(findElement(element));
+        select.selectByValue(value);
+        return this;
+    }
+
+    protected BasePage selectByIndex(By element, Integer index) {
+        log.debug("Select by index " + index);
+        Select select = new Select(findElement(element));
+        select.selectByIndex(index);
+        return this;
+    }
+
+    protected BasePage clickButtonRepeat(By element) {
+        try {
+            clickButton(element);
+        } catch (ElementNotVisibleException e) {
+            clickButton(element);
+        }
         return this;
     }
 
     protected BasePage clickLink(String linkText) {
         log.debug("Click link " + linkText);
-        driver.findElement(By.linkText(linkText)).click();
+        findElement(By.linkText(linkText)).click();
+        return this;
+    }
+
+    protected BasePage screenshot(String path) {
+        log.debug("Take screenshot");
+        TakesScreenshot takesScreenshot = ((TakesScreenshot) driver);
+        File file = (File) takesScreenshot.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(file, new File(path));
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+        return this;
+    }
+
+    protected BasePage alertAccept() {
+        log.debug("Alert accept");
+        driver.switchTo().alert().accept();
+        return this;
+    }
+
+    protected BasePage alertDismiss() {
+        log.debug("Alert accept");
+        driver.switchTo().alert().dismiss();
+        return this;
+    }
+
+    protected String getAlertText() {
+        log.debug("Alert get text");
+        return driver.switchTo().alert().getText();
+    }
+
+    protected BasePage alertAccept(String keysToSend) {
+        log.debug("Alert send keys");
+        driver.switchTo().alert().sendKeys(keysToSend);
         return this;
     }
 
@@ -65,12 +151,45 @@ public abstract class BasePage {
         return this;
     }
 
+    public Boolean isElementExist(By element) {
+        log.debug("Is element exist " + element);
+        List<WebElement> elementList = findElements(element);
+        return elementList.size() > 0;
+    }
+
+    public Boolean isElementDisplayed(By element) {
+        log.debug("Is element displayed " + element);
+        return findElement(element).isDisplayed();
+    }
+
+    public Boolean isElementEnabled(By element) {
+        log.debug("Is element enabled " + element);
+        return findElement(element).isEnabled();
+    }
+
     protected Integer findElementsCount(By element) {
-        return driver.findElements(element).size();
+        log.debug("Find elements count " + element);
+        return findElements(element).size();
     }
 
     protected String getText(By element) {
-        return driver.findElement(element).getText();
+        log.debug("Get element text " + element);
+        return findElement(element).getText();
+    }
+
+    protected WebElement findElement(By element) {
+        log.debug("Find element :: " + element);
+        return driver.findElement(element);
+    }
+
+    protected List<WebElement> findElements(By element) {
+        log.debug("Find elements :: " + element);
+        return driver.findElements(element);
+    }
+
+    protected BasePage verify(ExpectedCondition<Boolean> condition) {
+        wait.ignoring(ElementNotVisibleException.class).until(condition);
+        return this;
     }
 
     /**
@@ -79,15 +198,16 @@ public abstract class BasePage {
      * @return String of element attribute name
      */
     protected String getAttribute(By element, String attributeName) {
-        return driver.findElement(element).getAttribute(attributeName);
+        log.debug("get element attribute " + attributeName);
+        return findElement(element).getAttribute(attributeName);
     }
 
     protected void sleep(long seconds) {
+        log.debug("sleep timeout  " + seconds * 1000);
         try {
             Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
 }

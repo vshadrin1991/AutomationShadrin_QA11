@@ -3,6 +3,8 @@
 <suite name="Lecture 11">
     <parameter name="browser" value="CHROME"/>
     <parameter name="url" value="http://the-internet.herokuapp.com/"/>
+    <parameter name="config" value="herokuapp"/>
+
 
     <test name="Lecture_11">
         <classes>
