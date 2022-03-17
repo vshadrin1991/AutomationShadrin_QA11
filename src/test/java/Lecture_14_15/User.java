@@ -1,4 +1,4 @@
-package Lecture_14;
+package Lecture_14_15;
 
 public class User {
     String firstName;

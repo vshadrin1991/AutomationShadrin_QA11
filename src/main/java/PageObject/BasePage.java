@@ -63,6 +63,12 @@ public abstract class BasePage {
         return this;
     }
 
+    protected BasePage clickButton(WebElement element) {
+        log.debug("Click on button " + element);
+        element.click();
+        return this;
+    }
+
     protected BasePage clickCheckbox(By element) {
         log.debug("Click on checkbox " + element);
         click(element);

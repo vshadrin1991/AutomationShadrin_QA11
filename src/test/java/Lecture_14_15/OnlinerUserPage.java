@@ -1,4 +1,4 @@
-package Lecture_14;
+package Lecture_14_15;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
