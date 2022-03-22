@@ -219,6 +219,7 @@ public abstract class BasePage {
         return findElement(element).getAttribute(attributeName);
     }
 
+
     protected void sleep(long seconds) {
         log.debug("sleep timeout  " + seconds * 1000);
         try {
