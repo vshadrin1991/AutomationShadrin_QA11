@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke">
+    <parameter name="config" value="rabotaby"/>
+
+    <test name="Home page">
+        <classes>
+            <class name="rabotaby.HomePageTest"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,4 +1,4 @@
-package Lecture_14_15;
+package Lecture_16;
 
 import BaseObjects.BaseTest;
 import Entity.User;
@@ -15,7 +15,6 @@ public class LoginTest extends BaseTest {
         get(LoginPage.class)
                 .open();
     }
-
 
     @Test(priority = 1)
     public void loginPage_Test() {
