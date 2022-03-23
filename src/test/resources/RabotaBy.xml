@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke" parallel="tests" thread-count="2">
+    <parameter name="config" value="RabotaBy"/>
+    <parameter name="search" value="Automation QA"/>
+
+    <test name="Home Page Test">
+        <classes>
+            <class name="RabotaBy.HomePageTest"/>
+        </classes>
+    </test>
+
+    <test name="Search Result Page Test">
+        <classes>
+            <class name="RabotaBy.HomePageTest"/>
+            <class name="RabotaBy.SearchResultPageTest"/>
+        </classes>
+    </test>
+
+</suite>

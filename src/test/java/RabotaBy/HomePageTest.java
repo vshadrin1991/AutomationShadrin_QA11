@@ -1,14 +1,16 @@
-package rabotaby;
+package RabotaBy;
 
 import BaseObjects.BaseTest;
-import PageObject.rabotaby.SerachResultPage.SearchRoot;
-import PageObject.rabotaby.homepage.*;
+import PageObject.RabotaBy.HomePage.HomePage;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
 
+    @Parameters(value = "search")
     @Test(priority = 1)
-    public void checkHomePage_Test() {
+    public void checkHomePage_Test(@Optional(value = "Test") String search) {
         get(HomePage.class)
                 .open()
                 .getMainElement()
@@ -20,11 +22,6 @@ public class HomePageTest extends BaseTest {
                 .getDashboardElement()
                 .checkElement()
                 .getMainElement()
-                .enterSearch("Automation QA");
-    }
-
-    @Test(priority = 2)
-    public void checkSearchPage_Test() {
-        get(SearchRoot.class).checkSearchResultPage().checkSearchResult("Automation QA", 76);
+                .enterSearch(search);
     }
 }

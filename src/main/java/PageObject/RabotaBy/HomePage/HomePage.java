@@ -1,10 +1,10 @@
-package PageObject.rabotaby.homepage;
+package PageObject.RabotaBy.HomePage;
 
 import PageObject.BasePage;
-import PageObject.rabotaby.homepage.elements.DashboardElement;
-import PageObject.rabotaby.homepage.elements.FooterElement;
-import PageObject.rabotaby.homepage.elements.HeaderElement;
-import PageObject.rabotaby.homepage.elements.MainElement;
+import PageObject.RabotaBy.HomePage.Elements.DashboardElement;
+import PageObject.RabotaBy.HomePage.Elements.FooterElement;
+import PageObject.RabotaBy.HomePage.Elements.HeaderElement;
+import PageObject.RabotaBy.HomePage.Elements.MainElement;
 
 
 public class HomePage extends BasePage {

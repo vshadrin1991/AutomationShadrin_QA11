@@ -52,7 +52,6 @@ public abstract class BasePage {
         return this;
     }
 
-
     protected BasePage enter(By element, Boolean autoClean, CharSequence... data) {
         log.debug("Enter " + Arrays.toString(data));
         if (autoClean) {
@@ -218,7 +217,6 @@ public abstract class BasePage {
         log.debug("get element attribute " + attributeName);
         return findElement(element).getAttribute(attributeName);
     }
-
 
     protected void sleep(long seconds) {
         log.debug("sleep timeout  " + seconds * 1000);

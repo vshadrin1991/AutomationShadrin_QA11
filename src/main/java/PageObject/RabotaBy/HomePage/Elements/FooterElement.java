@@ -1,10 +1,11 @@
-package PageObject.rabotaby.homepage.elements;
+package PageObject.RabotaBy.HomePage.Elements;
 
-import PageObject.rabotaby.homepage.HomePage;
+import PageObject.RabotaBy.ElementInterface;
+import PageObject.RabotaBy.HomePage.HomePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class FooterElement extends HomePage implements HomeInterface {
+public class FooterElement extends HomePage implements ElementInterface {
     private By supernovaFooter = By.cssSelector("[class='supernova-footer HH-Supernova-Footer']");
 
     @Override

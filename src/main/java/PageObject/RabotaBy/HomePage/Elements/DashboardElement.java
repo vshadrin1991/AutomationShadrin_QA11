@@ -1,10 +1,11 @@
-package PageObject.rabotaby.homepage.elements;
+package PageObject.RabotaBy.HomePage.Elements;
 
-import PageObject.rabotaby.homepage.HomePage;
+import PageObject.RabotaBy.ElementInterface;
+import PageObject.RabotaBy.HomePage.HomePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class DashboardElement extends HomePage implements HomeInterface {
+public class DashboardElement extends HomePage implements ElementInterface {
     private By supernovaDashboardContent = By.cssSelector("[class='supernova-dashboard-content']");
 
     @Override

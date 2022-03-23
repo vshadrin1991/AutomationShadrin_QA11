@@ -1,10 +1,11 @@
-package PageObject.rabotaby.homepage.elements;
+package PageObject.RabotaBy.HomePage.Elements;
 
-import PageObject.rabotaby.homepage.HomePage;
+import PageObject.RabotaBy.ElementInterface;
+import PageObject.RabotaBy.HomePage.HomePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class HeaderElement extends HomePage implements HomeInterface {
+public class HeaderElement extends HomePage implements ElementInterface {
     private By supernovaOverlay = By.cssSelector("[class='supernova-overlay']");
 
     @Override
