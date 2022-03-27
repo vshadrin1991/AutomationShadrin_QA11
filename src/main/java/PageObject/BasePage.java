@@ -1,6 +1,6 @@
 package PageObject;
 
-import Configuration.PropertyReader;
+import Properties.PropertyReader;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;

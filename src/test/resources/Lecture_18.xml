@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MOODPANDA" parallel="tests" thread-count="10">
+    <parameter name="config" value="moodpanda"/>
+
+    <test name="Base test">
+        <classes>
+            <class name="Lecture_18.MoodPanda_Test"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,6 +1,6 @@
 package TestNgUtills;
 
-import Configuration.PropertyReader;
+import Properties.PropertyReader;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 
