@@ -23,7 +23,7 @@ public class Lecture_17 {
         baseURI = "https://reqres.in";
     }
 
-    //@Test(priority = 1)
+    @Test(priority = 1)
     public void get_test() {
         Response response = given().when().get("/api/users/2");
         response.then().assertThat().statusCode(200);
@@ -32,7 +32,7 @@ public class Lecture_17 {
         Assert.assertEquals(response.as(Root.class).data.id, 2);
     }
 
-    //@Test(priority = 2)
+    @Test(priority = 2)
     public void post_test() {
         Response response = given().when().header("Content-Type", "application/json").and().body(getJsonData("create")).post("/api/users");
         response.then().assertThat().statusCode(201);
@@ -40,7 +40,7 @@ public class Lecture_17 {
         Assert.assertEquals(response.then().extract().jsonPath().get("job"), "leader");
     }
 
-    //@Test(priority = 3)
+    @Test(priority = 3)
     public void user_test() {
         Response response = given().when().get("/api/users/3");
         response.then()
@@ -49,7 +49,7 @@ public class Lecture_17 {
     }
 
 
-    //@Test(priority = 4)
+    @Test(priority = 4)
     public void jsonSchema_test() {
         Response response = given().when().get("/api/users/4");
         response.then().assertThat().body(matchesJsonSchema(getJsonData("jsonSchemaUser")));
