@@ -1,0 +1,221 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "page": 2,
+      "per_page": 6,
+      "total": 12,
+      "total_pages": 2,
+      "data": [
+        {
+          "id": 7,
+          "email": "michael.lawson@reqres.in",
+          "first_name": "Michael",
+          "last_name": "Lawson",
+          "avatar": "https://reqres.in/img/faces/7-image.jpg"
+        }
+      ],
+      "support": {
+        "url": "https://reqres.in/#support-heading",
+        "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+      }
+    }
+  ],
+  "required": [
+    "page",
+    "per_page",
+    "total",
+    "total_pages",
+    "data",
+    "support"
+  ],
+  "properties": {
+    "page": {
+      "$id": "#/properties/page",
+      "type": "integer",
+      "title": "The page schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        2
+      ]
+    },
+    "per_page": {
+      "$id": "#/properties/per_page",
+      "type": "integer",
+      "title": "The per_page schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        6
+      ]
+    },
+    "total": {
+      "$id": "#/properties/total",
+      "type": "integer",
+      "title": "The total schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        12
+      ]
+    },
+    "total_pages": {
+      "$id": "#/properties/total_pages",
+      "type": "integer",
+      "title": "The total_pages schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        2
+      ]
+    },
+    "data": {
+      "$id": "#/properties/data",
+      "type": "array",
+      "title": "The data schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "id": 7,
+            "email": "michael.lawson@reqres.in",
+            "first_name": "Michael",
+            "last_name": "Lawson",
+            "avatar": "https://reqres.in/img/faces/7-image.jpg"
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/data/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/data/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "id": 7,
+                "email": "michael.lawson@reqres.in",
+                "first_name": "Michael",
+                "last_name": "Lawson",
+                "avatar": "https://reqres.in/img/faces/7-image.jpg"
+              }
+            ],
+            "required": [
+              "id",
+              "email",
+              "first_name",
+              "last_name",
+              "avatar"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/data/items/anyOf/0/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "enum" : [7, 8 ,9, 10, 11, 12],
+                "examples": [
+                  7
+                ]
+              },
+              "email": {
+                "$id": "#/properties/data/items/anyOf/0/properties/email",
+                "type": "string",
+                "title": "The email schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "michael.lawson@reqres.in"
+                ]
+              },
+              "first_name": {
+                "$id": "#/properties/data/items/anyOf/0/properties/first_name",
+                "type": "string",
+                "title": "The first_name schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Michael"
+                ]
+              },
+              "last_name": {
+                "$id": "#/properties/data/items/anyOf/0/properties/last_name",
+                "type": "string",
+                "title": "The last_name schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Lawson"
+                ]
+              },
+              "avatar": {
+                "$id": "#/properties/data/items/anyOf/0/properties/avatar",
+                "type": "string",
+                "title": "The avatar schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "https://reqres.in/img/faces/7-image.jpg"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "support": {
+      "$id": "#/properties/support",
+      "type": "object",
+      "title": "The support schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "url": "https://reqres.in/#support-heading",
+          "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+        }
+      ],
+      "required": [
+        "url",
+        "text"
+      ],
+      "properties": {
+        "url": {
+          "$id": "#/properties/support/properties/url",
+          "type": "string",
+          "title": "The url schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "https://reqres.in/#support-heading"
+          ]
+        },
+        "text": {
+          "$id": "#/properties/support/properties/text",
+          "type": "string",
+          "title": "The text schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "To keep ReqRes free, contributions towards server costs are appreciated!"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
