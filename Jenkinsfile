@@ -1,20 +1,27 @@
 pipeline {
     agent any
-    tools {
-       maven 'M3'
-    }
-    environment {
-       TEST_XML = "${params.TEST}"
-    }
-    stages {
-        stage('Test run') {
-            steps {
-                // Run Maven on a Unix agent.
-                bat 'echo "Hello"'
-                bat 'mvn -version'
-                bat 'mvn clean test -Dsuite="${env.TEST_XML}"'
-            }
+        tools {
+           maven "MAVEN"
+           jdk "JDK"
         }
+        environment {
+           TEST_XML = "${params.TEST}"
+        }
+        stages {
+            stage('Initialize'){
+                   steps{
+                       echo "PATH = ${M2_HOME}/bin:${PATH}"
+                       echo "M2_HOME = /opt/maven"
+                   }
+            }
+            stage('Test run') {
+                    steps {
+                    // Run Maven on a Unix agent.
+                        bat 'echo "Hello"'
+                        bat 'mvn -version'
+                        bat 'mvn clean test -Dsuite="${env.TEST_XML}"'
+                    }
+            }
 
         /* stage('Reports') {
             steps {
