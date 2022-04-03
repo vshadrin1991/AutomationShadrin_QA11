@@ -22,18 +22,17 @@ pipeline {
                         bat 'mvn clean test -Dsuite="${env.TEST_XML}"'
                     }
             }
-
-        /* stage('Reports') {
-            steps {
-                script {
-                    allure([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'target/allure-results']]
-                    ])}
+            stage('Reports') {
+                steps {
+                    script {
+                        allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']]
+                        ])}
                }
-        } */
-    }
+            }
+        }
 }
