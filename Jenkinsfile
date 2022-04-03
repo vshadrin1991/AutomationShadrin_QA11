@@ -5,7 +5,7 @@ pipeline {
            jdk "JDK"
         }
         environment {
-           TEST_XML = "${params.TEST}"
+           TEST_XML = "src/test/resources/${params.TEST}"
         }
         stages {
             stage('Initialize'){
