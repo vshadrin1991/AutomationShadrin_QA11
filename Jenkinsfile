@@ -10,7 +10,9 @@ pipeline {
         stage('Test run') {
             steps {
                 // Run Maven on a Unix agent.
-                cmd 'mvn clean test -Dsuite="${env.TEST_XML}"'
+                bat 'echo "Hello"'
+                bat 'mvn -version'
+                bat 'mvn clean test -Dsuite="${env.TEST_XML}"'
             }
         }
 
