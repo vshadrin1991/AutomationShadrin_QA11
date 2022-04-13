@@ -4,6 +4,7 @@ pipeline {
     tools {
         maven "MAVEN"
         jdk "JDK"
+        commandline '1.4.18'
     }
     environment {
         SUITE = "src/test/resources/${params.Suite}.xml"
@@ -25,7 +26,6 @@ pipeline {
             steps {
                 script {
                     allure([
-                        commandline: '1.4.18',
                         includeProperties: false,
                         jdk: '',
                         properties: [],
