@@ -25,6 +25,7 @@ pipeline {
             steps {
                 script {
                     allure([
+                        commandline: '1.4.18',
                         includeProperties: false,
                         jdk: '',
                         properties: [],
