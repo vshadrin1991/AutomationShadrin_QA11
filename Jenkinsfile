@@ -3,8 +3,6 @@ pipeline {
 
     tools {
         maven "MAVEN"
-        jdk "JDK"
-        commandline '1.4.18'
     }
     environment {
         SUITE = "src/test/resources/${params.Suite}.xml"
@@ -27,7 +25,7 @@ pipeline {
                 script {
                     allure([
                         includeProperties: false,
-                        jdk: '',
+                        jdk: 'JDK',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
                         results: [[path: 'target/allure-results']]
