@@ -42,7 +42,12 @@ public class HomePage {
     }
 
     public HomePage checkLoginException() {
-        emailException.shouldHave(Condition.text("Invalid  email address"));
+        emailException.shouldHave(Condition.text("email address"));
         return this;
     }
+    public HomePage checkLoginException(String exception) {
+        emailException.shouldHave(Condition.text(exception));
+        return this;
+    }
+
 }

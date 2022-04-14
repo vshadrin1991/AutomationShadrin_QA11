@@ -14,4 +14,12 @@ public class SelenideBaseTest {
     protected <T> T get(Class<T> pageClass) {
         return driver().hasWebDriverStarted() ? page(pageClass) : open(Configuration.baseUrl, pageClass);
     }
+
+    protected <T> T get(Class<T> pageClass, String url) {
+        return driver().hasWebDriverStarted() ? page(pageClass) : open(url, pageClass);
+    }
+
+    protected void close(){
+        driver().close();
+    }
 }
