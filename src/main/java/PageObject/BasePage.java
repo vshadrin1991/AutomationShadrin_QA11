@@ -1,5 +1,6 @@
 package PageObject;
 
+import Driver.DriverManager;
 import Properties.PropertyReader;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
@@ -16,8 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import static BaseObjects.DriverCreation.getDriver;
-
 @Log4j
 public abstract class BasePage {
     protected WebDriver driver;
@@ -26,7 +25,7 @@ public abstract class BasePage {
     protected Properties properties;
 
     protected BasePage() {
-        this.driver = getDriver();
+        this.driver = DriverManager.getDriver();
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
         this.actions = new Actions(this.driver);
         this.properties = PropertyReader.getProperties();

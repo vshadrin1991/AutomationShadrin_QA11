@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lecture 13">
+<suite name="Lecture 13" thread-count="3" parallel="tests">
+    <parameter name="config" value="herokuapp"/>
+    <parameter name="browser" value="chrome"/>
+
+
     <test name="Java Script Alerts">
         <parameter name="linkName" value="JS_ALERT"/>
         <classes>
