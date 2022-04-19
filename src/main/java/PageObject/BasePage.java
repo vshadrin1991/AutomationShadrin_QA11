@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import static BaseObjects.DriverCreation.getDriver;
+import static Driver.DriverManager.getDriver;
 
 @Log4j
 public abstract class BasePage {

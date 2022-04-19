@@ -7,7 +7,7 @@ import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
 
-import static BaseObjects.DriverCreation.getDriver;
+import static Driver.DriverManager.getDriver;
 
 public class InvokedMethodsListener implements IInvokedMethodListener {
 

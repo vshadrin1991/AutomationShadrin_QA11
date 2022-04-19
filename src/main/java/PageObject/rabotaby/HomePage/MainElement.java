@@ -10,6 +10,7 @@ public class MainElement extends BasePage {
     private By submit = By.cssSelector("[class='supernova-search-submit-text']");
 
     public MainElement open(){
+        System.out.println(properties.getProperty("text"));
         super.open();
         return this;
     }
