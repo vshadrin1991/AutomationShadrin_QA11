@@ -2,6 +2,8 @@ package Driver;
 
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+
 public abstract class DriverManager {
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
@@ -9,6 +11,7 @@ public abstract class DriverManager {
         if (driver.get() == null) {
             createDriver();
         }
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
     public abstract void createDriver();
@@ -20,7 +23,6 @@ public abstract class DriverManager {
     public static void closeDriver() {
         if (driver.get() != null) {
             driver.get().close();
-            driver.get().quit();
             driver.remove();
         }
     }
