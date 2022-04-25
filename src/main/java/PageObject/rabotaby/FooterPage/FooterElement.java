@@ -1,11 +1,11 @@
-package PageObject.rabotaby.HomePage;
+package PageObject.rabotaby.FooterPage;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class FooterElement extends BasePage {
-    private By supernovaFooter = By.cssSelector("[class='supernova-footer HH-Supernova-Footer']");
+    private By supernovaFooter = By.cssSelector("[class $='Supernova-Footer']");
 
     public FooterElement checkSupernovaFooter() {
         Assert.assertTrue(isElementExist(supernovaFooter));

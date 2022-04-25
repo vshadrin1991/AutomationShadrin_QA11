@@ -4,6 +4,7 @@
     <parameter name="config" value="rabotaby"/>
 
     <test name="Home page">
+        <parameter name="search" value="Automation QA"></parameter>
         <classes>
             <class name="rabotaby.HomePageTest"/>
         </classes>

@@ -1,7 +1,7 @@
 package CucumberSteps.rabotaby;
 
 import BaseObjects.BaseTest;
-import PageObject.rabotaby.HomePage.MainElement;
+import PageObject.rabotaby.ContentPage.HomePageContent.MainElement;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 

@@ -13,8 +13,13 @@ public class ChromeDriverManager extends DriverManager {
     public void createDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments(getProperties().getProperty("chrome.options").split(","));
-        WebDriver webDriver = new ChromeDriver(chromeOptions);
+        WebDriver webDriver;
+        if (getProperties().containsKey("chrome.options")) {
+            chromeOptions.addArguments(getProperties().getProperty("chrome.options").split(","));
+            webDriver = new ChromeDriver(chromeOptions);
+        } else {
+            webDriver = new ChromeDriver();
+        }
         driver.set(webDriver);
     }
 }

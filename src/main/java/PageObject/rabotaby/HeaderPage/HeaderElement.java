@@ -1,4 +1,4 @@
-package PageObject.rabotaby.HomePage;
+package PageObject.rabotaby.HeaderPage;
 
 import PageObject.BasePage;
 import org.openqa.selenium.By;
