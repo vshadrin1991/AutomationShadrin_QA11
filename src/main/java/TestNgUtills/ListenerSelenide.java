@@ -14,13 +14,9 @@ public class ListenerSelenide implements ITestListener {
 
     @Override
     public void onStart(ITestContext context) {
-        System.setProperty("logger_time", getSimpleDate());
-        new PropertyReader(context.getSuite().getParameter("config") == null ? System.getProperty("config") : context.getSuite().getParameter("config"));
+        System.setProperty("logger_time", new SimpleDateFormat("yyyyMMdd-HHmmss").format(Calendar.getInstance().getTime()));
+        new PropertyReader(context);
         setSelenideConfigurations();
-    }
-
-    private String getSimpleDate() {
-        return new SimpleDateFormat("yyyyMMdd-HHmmss").format(Calendar.getInstance().getTime());
     }
 
     public void setSelenideConfigurations() {

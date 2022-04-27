@@ -1,20 +1,27 @@
 package Lecture_17;
 
 import Lecture_17.Users.Root;
+import io.restassured.mapper.ObjectMapper;
 import io.restassured.response.Response;
+import org.apache.http.client.methods.HttpGet;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
 public class Lecture_17 {
 
@@ -24,6 +31,18 @@ public class Lecture_17 {
     }
 
     @Test(priority = 1)
+    public void test() throws URISyntaxException, IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI("https://reqres.in/api/users/2"))
+                .headers("Content-Type", "text/plain;charset=UTF-8")
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+    }
+
+    @Test(priority = 12)
     public void get_test() {
         Response response = given().when().get("/api/users/2");
         response.then().assertThat().statusCode(200);
