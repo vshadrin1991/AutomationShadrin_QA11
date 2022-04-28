@@ -1,20 +1,28 @@
 package Lecture_17;
 
+import Lecture_17.Users.Data;
 import Lecture_17.Users.Root;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
 public class Lecture_17 {
 
@@ -22,6 +30,67 @@ public class Lecture_17 {
     public void precondition() {
         baseURI = "https://reqres.in";
     }
+
+    @Test
+    public void onlinerCatalog_Test() throws URISyntaxException, IOException, InterruptedException {
+        HttpClient httpClient = HttpClient.newHttpClient();
+        Gson gson = new Gson();
+        //Apple catalog
+        HttpRequest catalog = HttpRequest
+                .newBuilder()
+                .uri(new URI("https://catalog.onliner.by/sdapi/catalog.api/search/mobile?on_sale=1&mfr[0]=apple&group=1"))
+                .GET()
+                .build();
+        HttpResponse<String> responseCatalog = httpClient.send(catalog, HttpResponse.BodyHandlers.ofString());
+        JsonObject catalogObject = gson.fromJson(responseCatalog.body(), JsonObject.class);
+
+        String productId = catalogObject.getAsJsonArray("products").get(0).getAsJsonObject().get("id").getAsString();
+        String productKey = catalogObject.getAsJsonArray("products").get(0).getAsJsonObject().get("key").getAsString();
+        String productName = catalogObject.getAsJsonArray("products").get(0).getAsJsonObject().get("name").getAsString();
+        //Positions
+        HttpRequest positions = HttpRequest
+                .newBuilder()
+                .uri(new URI("https://catalog.onliner.by/sdapi/shop.api/products/" + productKey + "/positions"))
+                .GET()
+                .build();
+        HttpResponse<String> responsePositions = httpClient.send(positions, HttpResponse.BodyHandlers.ofString());
+        JsonObject positionsObject = gson.fromJson(responsePositions.body(), JsonObject.class);
+        String positionId = positionsObject.getAsJsonObject("positions").getAsJsonArray("primary").get(0).getAsJsonObject().get("id").getAsString();
+        String shopId = positionsObject.getAsJsonObject("positions").getAsJsonArray("primary").get(0).getAsJsonObject().get("shop_id").getAsString();
+        //Add bin
+        Bin binBody = Bin.builder().position_id(positionId).product_id(productId).shop_id(shopId).product_key(productKey).quantity(1).build();
+        HttpRequest bin = HttpRequest
+                .newBuilder()
+                .uri(new URI("https://catalog.onliner.by/sdapi/cart.api/detached-cart/add"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(binBody)))
+                .build();
+
+        HttpResponse<String> binResponse = httpClient.send(bin, HttpResponse.BodyHandlers.ofString());
+        JsonObject binResponseObject = gson.fromJson(binResponse.body(), JsonObject.class);
+        String cartId = binResponseObject.get("cart_id").getAsString();
+        //Gte bin
+        HttpRequest getBin = HttpRequest
+                .newBuilder()
+                .uri(new URI("https://catalog.onliner.by/sdapi/cart.api/v2/detached-cart/" + cartId))
+                .GET()
+                .build();
+        HttpResponse<String> responseGetBin = httpClient.send(getBin, HttpResponse.BodyHandlers.ofString());
+        JsonObject responseGetBinObject = gson.fromJson(responseGetBin.body(), JsonObject.class);
+        String actualProductName = responseGetBinObject
+                .getAsJsonArray("position_groups")
+                .get(0)
+                .getAsJsonObject()
+                .getAsJsonArray("positions")
+                .get(0)
+                .getAsJsonObject()
+                .get("product")
+                .getAsJsonObject()
+                .get("name")
+                .getAsString();
+        Assert.assertEquals(actualProductName, productName);
+    }
+
 
     @Test(priority = 1)
     public void get_test() {
