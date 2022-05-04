@@ -18,9 +18,18 @@ import java.util.Properties;
 
 import static Driver.DriverManager.getDriver;
 
+/**
+ * @author vshadrin
+ */
 @Log4j
 public abstract class BasePage {
+    /**
+     * WebDriver instance
+     */
     protected WebDriver driver;
+    /**
+     * WebDriverWait instance
+     */
     protected WebDriverWait wait;
     protected Actions actions;
     protected Properties properties;
@@ -98,6 +107,11 @@ public abstract class BasePage {
         return this;
     }
 
+    /**
+     * @param element - page element
+     * @param value   - selected value
+     * @return instance BasePage
+     */
     protected BasePage selectByValue(By element, String value) {
         log.debug("Select by value " + value);
         Select select = new Select(findElement(element));
