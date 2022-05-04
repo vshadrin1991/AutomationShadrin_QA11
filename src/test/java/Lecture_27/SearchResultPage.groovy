@@ -4,6 +4,7 @@ import geb.Page
 
 class SearchResultPage extends Page {
     static content = {
-        checkSearchResult { $('#result-stats').text().contains("Результатов: примерно") }
+        resultStats { $('#result-stats') }
     }
+
 }

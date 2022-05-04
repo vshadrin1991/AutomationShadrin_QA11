@@ -137,14 +137,9 @@
             <version>5.1</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.ivy</groupId>
-            <artifactId>ivy</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.gmaven</groupId>
-            <artifactId>groovy-maven-plugin</artifactId>
-            <version>2.0</version>
+            <groupId>org.gebish</groupId>
+            <artifactId>geb-testng</artifactId>
+            <version>5.1</version>
         </dependency>
     </dependencies>
     <build>

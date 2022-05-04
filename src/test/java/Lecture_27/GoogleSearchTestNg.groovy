@@ -1,23 +1,19 @@
 package Lecture_27
 
+
 import geb.Browser
+import geb.spock.GebSpec
 import org.openqa.selenium.Keys
-import spock.lang.Specification
+import org.testng.annotations.Test
 
-class GoogleSearch extends Specification {
+class GoogleSearchTestNg extends GebSpec {
 
-    def "Test Search "() {
+    @Test
+    void testSearch() {
         def browser = new Browser()
-        given:
         browser.to GoogleSearchPage
-
-        when:
         browser.page(GoogleSearchPage).searchField << "Hello world!"
-
-        and:
         browser.page(GoogleSearchPage).searchField << Keys.ENTER
-
-        then:
         assert browser.page(SearchResultPage).resultStats.text().contains("1")
     }
 }
