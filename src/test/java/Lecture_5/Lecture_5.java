@@ -23,15 +23,6 @@ public class Lecture_5 {
         driver.manage().window().fullscreen();
     }
 
-    /*
-    Открыть сайт http://13gp.by/informatsiya/meditsinskie-kalkulyatory/994-raschet-indeksa-massy-tela
-    Ввести Рост = 183 см
-    Ввести Вес = 58 кг
-    Нажать на кнопку ‘Рассчитать’
-    Проверить, что значение в поле ‘ИМТ’ равно 17.32
-    Проверить, что статус равен ’ Недостаточной массе тела’
-    Закрыть окно браузера
-     */
     @Test(enabled = false)
     public void smokeTest1() {
         driver.get("http://13gp.by/informatsiya/meditsinskie-kalkulyatory/994-raschet-indeksa-massy-tela");
