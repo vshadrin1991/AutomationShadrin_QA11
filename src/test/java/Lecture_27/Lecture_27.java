@@ -6,9 +6,10 @@ import org.testng.annotations.Test;
 public class Lecture_27 {
 
     @Test
-    public void test(){
+    public void yamlTest() {
         YamlReader yamlReader = new YamlReader();
         System.out.println(yamlReader.readYaml("config"));
-        System.out.println(yamlReader.readYaml(Person.class, "config"));
+        Person person = yamlReader.readYaml(Person.class, "config");
+        System.out.println(person.getName());
     }
 }
