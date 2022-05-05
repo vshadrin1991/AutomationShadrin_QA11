@@ -1,4 +1,4 @@
-package Lecture_27
+package Lecture_27_Geb
 
 import geb.Browser
 import org.openqa.selenium.Keys
