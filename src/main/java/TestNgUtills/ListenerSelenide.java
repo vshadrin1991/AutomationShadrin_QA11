@@ -1,6 +1,6 @@
 package TestNgUtills;
 
-import Properties.PropertyReader;
+import PropertiesHelper.PropertyReader;
 import com.codeborne.selenide.Configuration;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -8,7 +8,7 @@ import org.testng.ITestListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import static Properties.PropertyReader.getProperties;
+import static PropertiesHelper.PropertyReader.getProperties;
 
 public class ListenerSelenide implements ITestListener {
 

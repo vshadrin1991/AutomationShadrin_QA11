@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static Properties.PropertyReader.getProperties;
+import static PropertiesHelper.PropertyReader.getProperties;
 
 public class ChromeDriverManager extends DriverManager {
 
@@ -26,6 +26,7 @@ public class ChromeDriverManager extends DriverManager {
                 chromeOptions.addArguments(getProperties().getProperty("chrome.options").split(","));
                 webDriver = new RemoteWebDriver(new URL(getProperties().getProperty("remote")), chromeOptions);
             } else {
+                WebDriverManager.chromedriver().setup();
                 webDriver = new ChromeDriver();
             }
             driver.set(webDriver);

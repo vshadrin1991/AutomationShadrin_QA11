@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import static Driver.DriverManager.closeDriver;
 import static Driver.DriverManager.getDriver;
-import static Properties.PropertyReader.getProperties;
+import static PropertiesHelper.PropertyReader.getProperties;
 
 @Listeners({Listener.class, InvokedMethodsListener.class})
 public abstract class BaseTest {
