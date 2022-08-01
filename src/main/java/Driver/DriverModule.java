@@ -1,8 +1,8 @@
 package Driver;
 
 import PropertiesHelper.PropertyReader;
+import TestNgUtills.Listener;
 import com.google.inject.AbstractModule;
-import com.google.inject.Exposed;
 import com.google.inject.Provides;
 import com.google.inject.name.Names;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
@@ -10,21 +10,25 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
 
 import java.time.Duration;
 
+import static Driver.DriverManager.getDriver;
+import static PropertiesHelper.PropertyReader.getProperties;
+
 public class DriverModule extends AbstractModule {
+
     @Override
     protected void configure() {
-        bind(DriverManagerFactory.class);
-        PropertyReader propertyReader = new PropertyReader("google");
-        Names.bindProperties(binder(), propertyReader.getProperties());
+        bind(PropertyReader.class).toInstance(new PropertyReader("google"));
+        bind(DriverManagerFactory.class).toInstance(new DriverManagerFactory(DriverManagerType.CHROME));
+        Names.bindProperties(binder(), getProperties());
     }
 
     @Provides
-    public WebDriver getDriver(DriverManagerFactory driverManagerFactory) {
-        return driverManagerFactory.getManager(DriverManagerType.CHROME).getDriver();
+    public WebDriver getDrivers() {
+        DriverManagerFactory.getManager();
+        return getDriver();
     }
 
     @Provides
@@ -42,8 +46,4 @@ public class DriverModule extends AbstractModule {
         return (JavascriptExecutor) (driver);
     }
 
-    @AfterTest(alwaysRun = true)
-    public void closeDriver(DriverManagerFactory driverManagerFactory) {
-        driverManagerFactory.getManager(DriverManagerType.CHROME).closeDriver();
-    }
 }
