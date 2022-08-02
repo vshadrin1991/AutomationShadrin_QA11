@@ -1,24 +1,23 @@
-package BaseObjects;
+package Modules;
 
-import Driver.DriverModule;
 import TestNgUtills.InvokedMethodsListener;
 import TestNgUtills.Listener;
-import org.testng.ITestContext;
+import com.google.inject.Injector;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Listeners;
+
+import java.lang.reflect.InvocationTargetException;
 
 import static Driver.DriverManager.closeDriver;
 
 @Listeners({Listener.class, InvokedMethodsListener.class})
 @Guice(modules = {DriverModule.class})
 public class BaseTestModule {
-    protected ITestContext context;
 
-    @BeforeTest
-    public void precondition(ITestContext context) {
-        this.context = context;
+    protected <T> T get(Class<T> page) {
+        Injector injector = com.google.inject.Guice.createInjector(new DriverModule());
+        return injector.getInstance(page);
     }
 
     @AfterTest(alwaysRun = true)

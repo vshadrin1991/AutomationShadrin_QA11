@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Wrapper">
+<suite name="Wrapper" parent-module="Modules.ParentModule" parallel="tests" thread-count="2">
     <parameter name="config" value="google"/>
 
-    <test name="Test">
+    <test name="Test1">
+        <parameter name="search" value="Hello 1"/>
         <classes>
             <class name="wrappers.WrapperTests"/>
         </classes>
     </test>
+
+    <test name="Test2">
+        <parameter name="search" value="Hello 2"/>
+        <classes>
+            <class name="wrappers.WrapperTests"/>
+        </classes>
+    </test>
+
 
 
 </suite>

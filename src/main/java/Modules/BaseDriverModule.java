@@ -1,4 +1,4 @@
-package BaseObjects;
+package Modules;
 
 import com.google.inject.Inject;
 import org.openqa.selenium.JavascriptExecutor;

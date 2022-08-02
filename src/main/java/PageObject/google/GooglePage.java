@@ -1,6 +1,6 @@
 package PageObject.google;
 
-import BaseObjects.BaseDriverModule;
+import Modules.BaseDriverModule;
 import com.google.inject.Inject;
 import org.openqa.selenium.By;
 
