@@ -7,8 +7,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Listeners;
 
-import java.lang.reflect.InvocationTargetException;
-
 import static Driver.DriverManager.closeDriver;
 
 @Listeners({Listener.class, InvokedMethodsListener.class})
